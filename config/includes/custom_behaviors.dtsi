@@ -6,7 +6,6 @@
     behaviors {
 
         // Sticky Key quick release
-
         skq: sticky_key_quick_release {
           compatible = "zmk,behavior-sticky-key";
           label = "STICKY_KEY_QUICK_RELEASE";
@@ -14,6 +13,14 @@
           bindings = <&kp>;
           release-after-ms = <1000>;
           quick-release;
+        };
+
+        // Tap dance for shift (Shift/CapsWord)
+        td_shift: tap_dance_shift {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&skq LSHFT>, <&caps_word>;
         };
 
         // Positional Homerow mods
@@ -27,7 +34,6 @@
 
         // Further optimization using urob's timerless homerow mods method:
         // https://github.com/urob/zmk-config#timeless-homerow-mods
-
         hm_l: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
