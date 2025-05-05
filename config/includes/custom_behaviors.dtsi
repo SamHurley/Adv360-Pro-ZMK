@@ -5,6 +5,17 @@
 
     behaviors {
 
+        // Sticky Key quick release
+
+        skq: sticky_key_quick_release {
+          compatible = "zmk,behavior-sticky-key";
+          label = "STICKY_KEY_QUICK_RELEASE";
+          #binding-cells = <1>;
+          bindings = <&kp>;
+          release-after-ms = <1000>;
+          quick-release;
+        };
+
         // Positional Homerow mods
         // Homerow mods that prevent accidental activations when rolling keys,
         // such as when typing `st` or `ne` on colemak-dh layouts or `as` on
@@ -16,6 +27,7 @@
 
         // Further optimization using urob's timerless homerow mods method:
         // https://github.com/urob/zmk-config#timeless-homerow-mods
+
         hm_l: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
